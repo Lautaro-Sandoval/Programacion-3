@@ -1,0 +1,16 @@
+a {
+    color: #0066cc;
+    text-decoration: none;
+    display: inline-block;
+}
+
+a:hover {
+    color: #004499;
+    text-decoration: underline;
+}
+
+a:active {
+    color: #002266;
+    text-decoration: none;
+    transform: scale(0.95);
+}

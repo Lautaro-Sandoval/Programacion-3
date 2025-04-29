@@ -1,0 +1,8 @@
+.boton {
+    padding: 5rem;
+}
+
+.boton:hover {
+    background-color: red;
+    font-size: large;
+}
