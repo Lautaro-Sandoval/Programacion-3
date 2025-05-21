@@ -6,6 +6,18 @@ class TurnosController {
 
         res.status(200).json(await turnosModel.list());
     }
+
+    async listById(req, res) {
+        const idPaciente = req.params.idPaciente;
+        const turno = await turnosModel.listById(idPaciente);
+        if (!turno) {
+            res.status(404).json({ message: "no se encontro el turno" });
+            return;
+        } else {
+            res.status(200).json(turno);
+        }
+    }
+
     async create(req, res) {
         const { fecha, hora, idPaciente } = req.body;
         const nuevoTurno = new Turno(fecha, hora, idPaciente);

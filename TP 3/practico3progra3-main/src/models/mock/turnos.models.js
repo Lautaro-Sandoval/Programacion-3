@@ -58,6 +58,20 @@ class TurnosModel {
             }
         );
     }
+
+    listById(idPaciente) {
+        return new Promise(
+            (resolve, reject) => {
+                const turno = this.data.filter((t) => t.idPaciente == idPaciente);
+                if (!turno) {
+                    console.log("Error: el idPaciente no existe");
+                    resolve(null);
+                } else {
+                    resolve(turno);
+                }
+            }
+        );
+    }
 }
 
 module.exports = new TurnosModel();

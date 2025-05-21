@@ -5,7 +5,7 @@ class Turno extends Identificador {
         super(id);
         this.fecha = fecha;
         this.hora = hora;
-        this.medico = "Nicolas Gonzales"
+        this.medico = "Nombre Doctor"
         this.idPaciente = idPaciente;
     }
 }

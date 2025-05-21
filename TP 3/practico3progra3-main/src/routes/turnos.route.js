@@ -5,6 +5,7 @@ rutaTurnos.get('/', turnosController.list);
 rutaTurnos.post('/',turnosController.create);
 rutaTurnos.put('/:id',turnosController.update);
 rutaTurnos.delete('/:id',turnosController.delete);
+rutaTurnos.get('/:idPaciente',turnosController.listById);
 
 //Otras rutas CRUD
 
