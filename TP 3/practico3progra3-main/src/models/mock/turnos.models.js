@@ -6,12 +6,10 @@ class TurnosModel {
         this.data.push(new Turno("25/15/2025", "19:20", 1, 1));
         this.id = 2
     }
-
     create(turno) {
         if(!turno || !turno.fecha || !turno.hora || !turno.idPaciente) {
             throw new Error("Turno no válido, tiene que tener fecha, hora y idPaciente");
         }
-
         return new Promise((resolve, reject) => {
             turno.id = this.id;
             this.id++;
@@ -19,7 +17,6 @@ class TurnosModel {
             resolve(turno);
         })
     }
-
     update(id, turno) {
         try {
             const turnoEncontrado = this.data.find((t) => t.id == id);
@@ -35,7 +32,6 @@ class TurnosModel {
             return null;
         }
     }
-
     delete(id) {
         try {
             const turnoEncontrado = this.data.find((t) => t.id == id);
@@ -50,7 +46,6 @@ class TurnosModel {
             return null;
         }
     }
-
     list() {
         return new Promise(
             (resolve, reject) => {
@@ -58,7 +53,6 @@ class TurnosModel {
             }
         );
     }
-
     listById(idPaciente) {
         return new Promise(
             (resolve, reject) => {
@@ -73,5 +67,4 @@ class TurnosModel {
         );
     }
 }
-
 module.exports = new TurnosModel();

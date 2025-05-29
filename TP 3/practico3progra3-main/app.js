@@ -9,8 +9,6 @@ var usersRouter = require('./routes/users');
 var pacientesRouter = require('./src/routes/pacientes.route');
 var turnosRouter = require('./src/routes/turnos.route');
 
-
-
 var app = express();
 
 // view engine setup
@@ -45,3 +43,5 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+

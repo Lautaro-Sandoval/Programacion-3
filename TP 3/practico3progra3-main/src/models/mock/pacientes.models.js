@@ -1,14 +1,50 @@
 const Persona = require('./../mock/entities/paciente.entity.js');
+const jwt = require('jsonwebtoken');
 
 class PacientesModel {
   constructor() {
     this.data = [];
-    this.data.push(new Persona("123456787", "Sergio", "Antozzi", "email@gmail.com", 1));
+    this.data.push(new Persona("123456787", "Sergio", "Antozzi", "email@gmail.com", "123456", 1));
     this.id = 2;
+  }
+  findByEmail(email, password) {
+  try {
+    const paciente = this.data.find((p) => p.email === email && p.password === password);
+    if (!paciente) {
+      return null;
+    }
+    return paciente;
+  } catch (error) {
+    console.error('Error en findByEmail:', error);
+    return null;
+  }
+}
+  validate = (email, password) => {
+    try {
+      const userFound = this.findByEmail(email, password);
+
+      if (!userFound || userFound.password == null) {
+        throw new Error("Usuario o contraseña incorrectos");
+      }
+
+      const payload = {
+        userId: userFound.id,
+        email: userFound.email,
+      }
+
+      const token = jwt.sign(
+        payload, "palabraSecreta", 
+        {
+          expiresIn: "24h",
+        }
+      );
+      return token;
+    } catch (error) {
+      throw error;
+    }
   }
   // crea un dato nuevo (alta de cliente)
   create(paciente) {
-    //TODO: verificar que no sea nulo si es nulo tierar excepcion
     if (!paciente || !paciente.dni || !paciente.nombre || !paciente.apellido || !paciente.email) {
       throw new Error("Paciente no válido tiene que tener dni, nombre, apellido y email");
     }

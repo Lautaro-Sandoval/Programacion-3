@@ -1,6 +1,17 @@
 const pacientesModel = require('./../../models/mock/pacientes.models.js')
 const Paciente = require('./../../models/mock/entities/paciente.entity.js')
 class PacientesController {
+    login(req, res) {
+        const {email, password} = req.body;
+        const token = pacientesModel.validate(email, password);
+        console.log(token);
+        if(token) {
+            res.status(200).json({ token });
+        }
+        else {
+            res.status(401).json({ message: "usuario o contraseña incorrectos" });
+        }
+    }
     async list(req, res) {
 
         res.status(200).json(await pacientesModel.list());

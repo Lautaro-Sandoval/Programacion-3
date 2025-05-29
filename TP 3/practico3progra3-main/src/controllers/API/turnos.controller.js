@@ -3,10 +3,8 @@ const Turno = require('./../../models/mock/entities/turno.entity.js')
 
 class TurnosController {
     async list(req, res) {
-
         res.status(200).json(await turnosModel.list());
     }
-
     async listById(req, res) {
         const idPaciente = req.params.idPaciente;
         const turno = await turnosModel.listById(idPaciente);
@@ -17,7 +15,6 @@ class TurnosController {
             res.status(200).json(turno);
         }
     }
-
     async create(req, res) {
         const { fecha, hora, idPaciente } = req.body;
         const nuevoTurno = new Turno(fecha, hora, idPaciente);
@@ -52,5 +49,5 @@ class TurnosController {
         }
     }
 }
-
 module.exports = new TurnosController();
+

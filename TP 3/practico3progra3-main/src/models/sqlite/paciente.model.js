@@ -4,8 +4,21 @@ const {Paciente} = require('../sqlite/entities/paciente.entity.js');
     const users = Paciente.findAll();
     return users;
   }
-//TODO: agregar operaciones CRUD
+
+  const createPacienteModel = (paciente) => {
+    return Paciente.create({paciente});
+  }
+
+  const updatePacienteModel = (id, paciente) => {
+    return Paciente.update({paciente}, {where: {id}});
+  }
+  const deletePacienteModel = (id) => {
+    return Paciente.destroy({where: {id}});
+  }
 
   module.exports = {
-    getPacientesModel
+    getPacientesModel,
+    createPacienteModel,
+    updatePacienteModel,
+    deletePacienteModel
   }
